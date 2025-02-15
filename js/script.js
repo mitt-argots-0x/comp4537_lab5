@@ -81,7 +81,6 @@ async function queryB() {
                 const name = match[1];
                 const dateOfBirth = match[2];
                 jsonData = { name, dateOfBirth };
-                console.log(jsonData);
 
                 response = await fetch(`${URL}/lab5/api/v1/sql/query`, {
                     method: "POST",
@@ -106,7 +105,6 @@ async function queryB() {
             document.getElementById("result").innerHTML = message.invalidQuery;
         }
     } catch (error) {
-        console.error('Error:', error);
         document.getElementById("result").innerHTML = message.err;
     }
 }
