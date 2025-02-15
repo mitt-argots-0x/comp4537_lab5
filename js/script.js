@@ -74,7 +74,7 @@ async function queryB() {
         let response;
 
         if (query.trim().toLowerCase().startsWith("insert")) {
-            const regex = /insert\s+into\s+patients\s*\(name,\s*dateOfBirth\)\s*values\s*\(\s*"([^"]+)"\s*,\s*"([^"]+)"\s*\);?/i;
+            const regex = /insert\s+into\s+patients\s*\(name,\s*dateOfBirth\)\s*values\s*\(\s*['"]([^'"]+)['"]\s*,\s*['"]([^'"]+)['"]\s*\);?/i;
             const match = query.match(regex);
             let jsonData;
             if (match) {
