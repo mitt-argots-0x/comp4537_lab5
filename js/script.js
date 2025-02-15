@@ -1,4 +1,4 @@
-const URL = "https://comp4537-lab5-10kt.onrender.com/";  // Change this to adams render url ##########################
+const URL = "https://comp4537-lab5-10kt.onrender.com";  // Change this to adams render url ##########################
 
 // const a = [{
 //     name: 'Sara Brown',
@@ -19,7 +19,7 @@ const URL = "https://comp4537-lab5-10kt.onrender.com/";  // Change this to adams
 
 async function queryA() {
     try {
-        let response = await fetch(URL, {
+        let response = await fetch(`${URL}/lab5/api/v1/sql/query`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ async function queryA() {
                 dateOfBirth: '1990-01-01'
             })
         });
-        response = await fetch(URL, {
+        response = await fetch(`${URL}/lab5/api/v1/sql/query`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ async function queryA() {
                 dateOfBirth: '1941-01-01'
             })
         });
-        response = await fetch(URL, {
+        response = await fetch(`${URL}/lab5/api/v1/sql/query`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ async function queryA() {
                 dateOfBirth: '1961-01-30'
             })
         });
-        response = await fetch(URL, {
+        response = await fetch(`${URL}/lab5/api/v1/sql/query`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -97,8 +97,9 @@ async function queryB() {
                 document.getElementById("result").innerHTML = message.invalidQuery;
             }
         } else if (query.trim().toLowerCase().startsWith("select")) {
-            const encodedQuery = encodeURIComponent(query);
-            response = await fetch(`${URL}/data?query=${encodedQuery}`);
+            // const encodedQuery = encodeURIComponent(query);
+            // response = await fetch(`${URL}/data?query=${encodedQuery}`);
+            response = await fetch(`${URL}/lab5/api/v1/sql/getAll?table=patients`);
             const data = await response.json();
             document.getElementById("result").innerHTML = JSON.stringify(data, null, 2);
         } else {
